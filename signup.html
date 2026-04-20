@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder | Create Account</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none; color:inherit;">PATH<span>FINDER</span></a>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-card" id="authCard">
+            <div class="badge">✦ JOIN THE JOURNEY</div>
+            <h2>Create Account</h2>
+            <p class="subtitle">Start building your personalized roadmap today.</p>
+
+            <div class="social-grid">
+                <button class="social-btn">Google</button>
+                <button class="social-btn">LinkedIn</button>
+            </div>
+
+            <div class="divider"><span>OR REGISTER WITH EMAIL</span></div>
+
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div id="step1">
+                    <div class="input-group">
+                        <label for="userName">Full Name</label>
+                        <input type="text" id="userName" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="userEmail">Email Address</label>
+                        <input type="email" id="userEmail" placeholder="name@company.com" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label>Create Password</label>
+                            <span class="toggle-password" onclick="togglePass()">Show</span>
+                        </div>
+                        <input type="password" id="userPass" placeholder="Min. 8 characters" required>
+                    </div>
+
+                    <div class="input-group" style="flex-direction: row; align-items: flex-start; gap: 10px;">
+                        <input type="checkbox" id="terms" style="width: 18px; height: 18px; margin-top: 2px;" required>
+                        <label for="terms" style="text-transform: none; font-weight: 400; cursor: pointer;">
+                            I agree to the <a href="#" class="form-link">Terms of Service</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="cta-button" style="width:100%; margin-top: 10px;">
+                        Create Account
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePass() {
+            const passInput = document.getElementById('userPass');
+            const toggleText = document.querySelector('.toggle-password');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                toggleText.innerText = 'Hide';
+            } else {
+                passInput.type = 'password';
+                toggleText.innerText = 'Show';
+            }
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const card = document.getElementById('authCard');
+            const btn = e.target.querySelector('.cta-button');
+
+            // Simple Animation Feedback
+            btn.innerText = "Creating Account...";
+            btn.style.opacity = "0.7";
+
+            // Simulate redirect to onboarding or login
+            setTimeout(() => {
+                alert("Account created successfully! Please login.");
+                window.location.href = 'login.html';
+            }, 2000);
+        }
+    </script>
+
+  
+</body>
+</html>

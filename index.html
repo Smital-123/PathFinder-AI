@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder | AI Career Navigation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">PATH<span>FINDER</span></a></div>
+        
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="quiz.html" class="nav-link">Career Quiz</a>
+                <a href="community.html" class="nav-link">Community</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="AI.html" class="nav-link">AI</a>
+            </div>
+        </nav>
+
+        <div class="header-actions">
+            <button class="login-btn" onclick="window.location.href='login.html'">Log In</button>
+            <button class="signup-btn" onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="badge">✦ ADVANCED CAREER INTELLIGENCE</div>
+            <h1>Navigate Your <br> <span class="cyan-text">Expert</span> <br> Career Path</h1>
+            <p class="subtitle">Stop wandering. Use our AI engine to map out the exact skills, projects, and roles needed to reach your dream job.</p>
+            
+            <div class="hero-btns">
+                <button class="cta-button" onclick="window.location.href='login.html'">Start Your Journey</button>
+                <button class="secondary-button">View All Roadmaps</button>
+            </div>
+        </section>
+        <div class="terminal-ticker">
+    <div class="ticker-wrapper">
+        <span class="ticker-item"><span class="trend-up">▲</span> AI ENGINEER: +24% Demand</span>
+        <span class="ticker-item"><span class="trend-up">▲</span> NEXT.JS: High Volume</span>
+        <span class="ticker-item"><span class="trend-down">▼</span> LEGACY PHP: -8% Demand</span>
+        <span class="ticker-item"><span class="trend-up">▲</span> CYBER SECURITY: Urgent Hiring</span>
+        <span class="ticker-item"><span class="trend-up">▲</span> RUST: Salary Peak</span>
+        <span class="ticker-item"><span class="trend-down">▼</span> MANUAL QA: Shifting to AI-Automation</span>
+    </div>
+</div>
+
+        <section class="stats">
+            <div class="stat-item">
+                <h2>12+</h2>
+                <p>Niche Paths</p>
+            </div>
+            <div class="stat-item">
+                <h2>50+</h2>
+                <p>Roadmaps</p>
+            </div>
+            <div class="stat-item">
+                <h2>AI</h2>
+                <p>Powered</p>
+            </div>
+            <div class="stat-item">
+                <h2>$0</h2>
+                <p>Free Entry</p>
+            </div>
+        </section>
+        <div id="aiChatbot" class="chatbot-container" style="display:none;">
+    <div class="chatbot-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="status-dot"></div>
+            <span>Pathfinder AI Assistant</span>
+        </div>
+        <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer; font-size: 1.2rem;">✕</button>
+    </div>
+    <div id="chatMessages" class="chat-messages">
+        <div class="message ai">Hello! I'm the Pathfinder AI. Ready to architect your career? What domain are we exploring today?</div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="Ask about roadmaps, skills, or salary..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()" class="send-btn">🚀</button>
+    </div>
+</div>
+
+<button class="chatbot-toggle" onclick="toggleChat()">
+    <span class="bot-icon">🤖</span>
+    <span class="toggle-text">AI Help</span>
+</button>
+<section class="readiness-section" style="padding: 100px 6%; background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);">
+    <div style="max-width: 1000px; margin: 0 auto; border: 1px solid var(--cyan); border-radius: 20px; padding: 50px; position: relative; overflow: hidden;">
+        <div class="badge" style="background: var(--cyan); color: #000;">AI DIAGNOSTIC</div>
+        <h2 style="font-size: 2.5rem; margin: 20px 0;">Check Your <span class="cyan-text">Job Readiness</span></h2>
+        <p style="color: var(--text-dim); margin-bottom: 30px;">Enter the tech stack you are currently learning to calculate your market score.</p>
+        
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <input type="text" id="readinessInput" placeholder="e.g. React, Node.js, MySQL, Python" style="flex: 1; min-width: 300px; padding: 15px; border-radius: 10px; border: 1px solid var(--border); background: #0d1117; color: white;">
+            <button onclick="calculateReadiness()" class="cta-button" style="padding: 0 40px;">RUN ANALYSIS</button>
+        </div>
+
+        <div id="readinessResult" style="display: none; margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <span style="font-weight: 800; letter-spacing: 1px;">MARKET FIT SCORE</span>
+                <span id="scorePercent" style="color: var(--cyan); font-weight: 900; font-size: 1.5rem;">0%</span>
+            </div>
+            <div style="height: 10px; width: 100%; background: #333; border-radius: 5px;">
+                <div id="scoreBar" style="height: 100%; width: 0%; background: var(--cyan); transition: 1s ease-out; border-radius: 5px;"></div>
+            </div>
+            <p id="readinessFeedback" style="margin-top: 20px; color: var(--text-dim); font-style: italic;"></p>
+        </div>
+    </div>
+</section>
+
+<section class="clarity-faq-hub" style="padding: 100px 6%; background: rgba(0,212,255,0.02); border-top: 1px solid var(--border); display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: start;">
+    
+    <div class="clarity-column">
+        <div class="badge">PATHFINDER INSIGHTS</div>
+        <h2 style="font-size: 2.8rem; margin: 20px 0 15px;">Career <span class="cyan-text">Clarity</span> in Minutes</h2>
+        <p style="color: var(--text-dim); margin-bottom: 40px; max-width: 500px;">Our AI doesn't just suggest jobs; it analyzes the exact market value, skills, and growth potential of niche roles so you can see your perfect fit instantly.</p>
+        
+        <div class="clarity-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+            <div class="clarity-card" style="border-radius: 12px; overflow: hidden; position: relative;">
+                <div style="background: linear-gradient(135deg, #a855f7, #6e44ff); padding: 25px 25px 80px;">
+                    <div class="tag-badge" style="background: rgba(255,255,255,0.1); color: white;">#Creativity</div>
+                    <h3 style="color: white; font-size: 1.4rem; margin-top: 20px;">Product Designer</h3>
+                </div>
+                <div style="padding: 20px; background: rgba(22,27,34,0.7); backdrop-filter: blur(10px); position: absolute; bottom: 0; width: 100%;">
+                    <p style="color: var(--text-dim); font-size: 0.85rem;">Leverage design skills to create intuitive user experiences. Salary: $120k+</p>
+                </div>
+            </div>
+            <div class="clarity-card" style="border-radius: 12px; overflow: hidden; position: relative; background: #1c2128; border: 1px solid var(--border);">
+                 <div style="padding: 25px 25px 80px;">
+                    <h3 style="margin-top: 20px;">Backend Architect</h3>
+                 </div>
+                <div style="padding: 20px; background: rgba(22,27,34,0.7); position: absolute; bottom: 0; width: 100%;">
+                    <p style="color: var(--text-dim); font-size: 0.85rem;">Engineer robust, high-availability system cores. Growth: Very High</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-column">
+        <div class="badge">SUPPORT PORTAL</div>
+        <h2 style="margin: 20px 0;">Expert <span class="cyan-text">Intelligence</span> FAQ</h2>
+        
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>🤔 How is this roadmap different from a typical career guide?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Our Neural Engine analyzes live market data, demand, and skill dependencies. It doesn't just list jobs; it builds a sequential learning path optimized for job readiness in 2026.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>💡 What data sources does Pathfinder use?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>We connect to millions of anonymized job postings, open-source technology repositories, salary reports, and skill adjacency maps to ensure our insights are statistically sound and real-time.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>🔒 How secure is my career and skill data?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>We prioritize security. Your specific choices and diagnostic inputs are siloed in your local environment and only transmitted securely to the backend when you actively choose to generate or save a roadmap.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="domain-grid">
+    <div class="domain-card" onclick="selectDomain('Web Dev')">🌐 Web Dev</div>
+    <div class="domain-card" onclick="selectDomain('AI & ML')">🤖 AI & ML</div>
+    <div class="domain-card" onclick="selectDomain('Security')">🔐 Security</div>
+    <div class="domain-card" onclick="selectDomain('Data Science')">📊 Data Science</div>
+    <div class="domain-card" onclick="selectDomain('Cloud')">☁️ Cloud</div>
+    <div class="domain-card" onclick="selectDomain('Design')">🎨 Design</div>
+    <div class="domain-card" onclick="selectDomain('Mobile')">📱 Mobile</div>
+    <div class="domain-card" onclick="selectDomain('Blockchain')">⛓️ Blockchain</div>
+</div>
+
+<div class="generator-box">
+    <textarea id="userSkillInput" placeholder="Describe your current skills..."></textarea>
+    <button class="purple-gen-btn" onclick="generateSpecificRoadmap()">🤖 Generate Roadmap</button>
+</div>
+
+<div id="roadmapResult" class="roadmap-container" style="display: none;">
+    <div class="result-header">
+        <h2 id="resTitle"></h2>
+        <div class="demand-meter">
+            <span>Market Demand:</span>
+            <div class="meter-bar"><div id="meterFill"></div></div>
+        </div>
+    </div>
+    <div id="resBody" class="roadmap-steps"></div>
+</div>
+
+
+
+        <section class="explore">
+            <h2 class="section-title">Explore Career Fields</h2>
+            <p class="section-desc">Click a sector below to generate a real-time AI learning path.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <p>Build the modern web with React, Next.js, and Node.</p>
+                    <span class="tag">High Demand</span>
+                </div>
+                <div class="card">
+                    <div class="icon">📊</div>
+                    <h3>Data Science</h3>
+                    <p>Master Python, SQL, and predictive analytics.</p>
+                    <span class="tag">Top Paying</span>
+                </div>
+                <div class="card">
+                    <div class="icon">🎨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Create stunning user experiences and interfaces.</p>
+                    <span class="tag">Creative</span>
+                </div>
+                <div class="card">
+                    <div class="icon">🤖</div>
+                    <h3>AI & ML Engineer</h3>
+                    <p>Train deep learning models and build neural nets.</p>
+                    <span class="tag">Future-Proof</span>
+                </div>
+                <div class="card">
+                    <div class="icon">🔐</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect data and stop sophisticated cyber attacks.</p>
+                    <span class="tag">Critical</span>
+                </div>
+                <div class="card">
+                    <div class="icon">📱</div>
+                    <h3>Mobile Dev</h3>
+                    <p>Develop apps for iOS and Android with Flutter.</p>
+                    <span class="tag">Growing</span>
+                </div>
+                <div class="card">
+                    <div class="icon">☁️</div>
+                    <h3>Cloud Systems</h3>
+                    <p>Scale global infrastructure on AWS and Azure.</p>
+                    <span class="tag">Infrastructure</span>
+                </div>
+                <div class="card">
+                    <div class="icon">📣</div>
+                    <h3>Digital Strategy</h3>
+                    <p>Master SEO, Social Media, and Growth Hacking.</p>
+                    <span class="tag">Business</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script type="module" src="script.js"></script>
+
+
+
+</body>
+</html>

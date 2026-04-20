@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder | Secure Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none; color:inherit;">PATH<span>FINDER</span></a>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-card" id="authCard">
+            <div class="badge">✦ SECURE ACCESS</div>
+            <h2>Welcome Back</h2>
+            <p class="subtitle">Enter your details to access your roadmap.</p>
+
+            <div class="social-grid">
+                <button class="login-btn" id="googleLoginBtn">Login with Google</button>
+                <button class="social-btn">LinkedIn</button>
+            </div>
+
+            <div class="divider"><span>OR</span></div>
+
+            <form id="loginForm" onsubmit="handleFinalLogin(event)">
+                <div id="step1">
+                    <div class="input-group">
+                        <label for="userEmail">Email Address</label>
+                        <input type="email" id="userEmail" placeholder="name@company.com" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label>Password</label>
+                            <span class="toggle-password" onclick="togglePass()">Show</span>
+                        </div>
+                        <input type="password" id="userPass" placeholder="••••••••" required>
+                        <a href="#" class="form-link" style="margin-top: 8px; display: block; text-align: right;">Forgot Password?</a>
+                    </div>
+
+                    <button type="button" class="cta-button" style="width:100%; margin-top: 10px;" onclick="validateStep1()">
+                        Continue
+                    </button>
+                </div>
+
+                <div id="step2" style="display:none;">
+                    <div class="input-group" style="text-align: center;">
+                        <label style="display: block; margin-bottom: 15px;">ENTER 6-DIGIT CODE</label>
+                        <div class="otp-container" id="otpInputs">
+                            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
+                        </div>
+                    </div>
+                    
+                    <p class="resend-text">Resend code in <span id="timer">60</span>s</p>
+                    
+                    <button type="submit" id="verifyBtn" class="cta-button" style="width:100%">
+                        Verify & Login
+                    </button>
+                    
+                    <button type="button" class="secondary-button" style="width:100%; margin-top:15px; padding:12px; font-size: 0.9rem;" onclick="hideOTP()">
+                        Back to Login
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Password Toggle Feature ---
+        function togglePass() {
+            const passInput = document.getElementById('userPass');
+            const toggleText = document.querySelector('.toggle-password');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                toggleText.innerText = 'Hide';
+            } else {
+                passInput.type = 'password';
+                toggleText.innerText = 'Show';
+            }
+        }
+
+        // --- Validation & Feedback ---
+        function validateStep1() {
+            const email = document.getElementById('userEmail').value;
+            const pass = document.getElementById('userPass').value;
+            const card = document.getElementById('authCard');
+
+            if(!email || !pass) {
+                // Shake animation for error
+                card.classList.add('shake');
+                setTimeout(() => card.classList.remove('shake'), 500);
+                return;
+            }
+            showOTP();
+        }
+
+        function showOTP() {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+            startTimer();
+            // Focus first OTP box
+            document.querySelectorAll('.otp-input')[0].focus();
+        }
+
+        function hideOTP() {
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+        }
+
+        function startTimer() {
+            let timeLeft = 60;
+            const timerElement = document.getElementById('timer');
+            const countdown = setInterval(() => {
+                timeLeft--;
+                timerElement.innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    timerElement.parentElement.innerHTML = '<a href="#" class="form-link">Resend Code</a>';
+                }
+            }, 1000);
+        }
+
+        // --- Advanced OTP Logic ---
+        const otpInputs = document.querySelectorAll('.otp-input');
+        
+        otpInputs.forEach((input, index) => {
+            // Move forward
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+                // Auto-submit on last digit
+                if (Array.from(otpInputs).every(i => i.value !== "")) {
+                    document.getElementById('verifyBtn').click();
+                }
+            });
+
+            // Move backward on Backspace
+            input.addEventListener('keydown', (e) => {
+                if (e.key === "Backspace" && e.target.value === "" && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+
+        function handleFinalLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById('verifyBtn');
+            btn.innerText = "Authenticating...";
+            btn.style.opacity = "0.7";
+            
+            // Simulate API delay
+            setTimeout(() => {
+                window.location.href = 'dashboard.html'; // Redirect to your next page
+            }, 1500);
+        }
+    </script>
+
+    <script type="module" src="login.js"></script>
+</body>
+</html>

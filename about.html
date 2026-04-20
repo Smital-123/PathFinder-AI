@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder | Our Mission</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">PATH<span>FINDER</span></a></div>
+        <nav class="nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link active">About</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </nav>
+        <button class="login-btn" onclick="window.location.href='login.html'">Sign In</button>
+    </header>
+
+    <main class="hero about-hero" style="padding-top: 100px; text-align: center;">
+        <div class="badge" style="letter-spacing: 2px; font-size: 0.7rem; font-weight: 800; color: var(--cyan); margin-bottom: 20px;">THE PATHFINDER PROTOCOL</div>
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px;">Engineering Your <span class="cyan-text">Evolution</span></h1>
+        <p class="subtitle" style="max-width: 700px; margin: 0 auto 60px; color: var(--text-dim);">Traditional roadmaps are static snapshots of the past. Pathfinder is a living neural network that adapts to the global job market in real-time.</p>
+        
+        <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 10%;">
+            <div class="card">
+                <div class="icon" style="font-size: 2rem; margin-bottom: 15px;">📡</div>
+                <h3>Market Intelligence</h3>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Our AI scans 500k+ global job postings daily to identify exactly which skills are trending in the industry right now.</p>
+            </div>
+            <div class="card">
+                <div class="icon" style="font-size: 2rem; margin-bottom: 15px;">🧠</div>
+                <h3>Neural Sequencing</h3>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">We don't just list skills. We calculate the most efficient order to learn them, ensuring each concept builds on the last.</p>
+            </div>
+            <div class="card">
+                <div class="icon" style="font-size: 2rem; margin-bottom: 15px;">⚡</div>
+                <h3>Adaptive Pace</h3>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Stuck on a concept? The AI detects your friction and provides supplementary resources to bridge the gap instantly.</p>
+            </div>
+        </div>
+
+        <section class="live-status" style="padding: 80px 10%;">
+            <div class="status-container" style="background: rgba(0, 212, 255, 0.03); border: 1px solid var(--border); border-radius: 20px; padding: 40px; backdrop-filter: blur(5px);">
+                <div class="status-header" style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 30px;">
+                    <span class="pulse-icon"></span>
+                    <span style="font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; color: var(--text-dim);">AI ENGINE LIVE STATUS</span>
+                </div>
+                <div class="status-stats" style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px;">
+                    <div class="stat">
+                        <h4 id="jobsAnalyzed" style="font-family: 'Archivo Black'; font-size: 2rem; color: var(--cyan);">0</h4>
+                        <p style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Jobs Analyzed Today</p>
+                    </div>
+                    <div class="stat">
+                        <h4 id="skillsMapped" style="font-family: 'Archivo Black'; font-size: 2rem; color: var(--cyan);">0</h4>
+                        <p style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Skills Mapped</p>
+                    </div>
+                    <div class="stat">
+                        <h4 id="usersActive" style="font-family: 'Archivo Black'; font-size: 2rem; color: var(--cyan);">0</h4>
+                        <p style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Active Explorers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison-section" style="padding: 40px 10% 100px;">
+            <h2 style="margin-bottom: 40px;">The Pathfinder Edge</h2>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Traditional Learning</th>
+                            <th class="highlight">Pathfinder AI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Curriculum</td>
+                            <td>Static / Outdated</td>
+                            <td class="highlight">Real-time Market Sync</td>
+                        </tr>
+                        <tr>
+                            <td>Personalization</td>
+                            <td>One-size-fits-all</td>
+                            <td class="highlight">Adaptive Skill-Gap Analysis</td>
+                        </tr>
+                        <tr>
+                            <td>Resources</td>
+                            <td>Manual Search</td>
+                            <td class="highlight">AI-Curated Top Tier Links</td>
+                        </tr>
+                        <tr>
+                            <td>Career Timing</td>
+                            <td>Fixed Semesters</td>
+                            <td class="highlight">Shortest Path Optimization</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="ecosystem" style="padding-bottom: 100px;">
+            <h2 style="margin-bottom: 20px;">Built for the <span class="cyan-text">Modern Ecosystem</span></h2>
+            <p style="color: var(--text-dim); margin-bottom: 40px;">We integrate data from the world's leading tech hubs.</p>
+            <div class="logo-cloud">
+                <span class="tech-tag" style="padding: 10px 20px; background: var(--glass); border: 1px solid var(--border); border-radius: 50px; margin: 5px; display: inline-block; font-size: 0.8rem; font-weight: 600;">Silicon Valley</span>
+                <span class="tech-tag" style="padding: 10px 20px; background: var(--glass); border: 1px solid var(--border); border-radius: 50px; margin: 5px; display: inline-block; font-size: 0.8rem; font-weight: 600;">London</span>
+                <span class="tech-tag" style="padding: 10px 20px; background: var(--glass); border: 1px solid var(--border); border-radius: 50px; margin: 5px; display: inline-block; font-size: 0.8rem; font-weight: 600;">Bangalore</span>
+                <span class="tech-tag" style="padding: 10px 20px; background: var(--glass); border: 1px solid var(--border); border-radius: 50px; margin: 5px; display: inline-block; font-size: 0.8rem; font-weight: 600;">Berlin</span>
+                <span class="tech-tag" style="padding: 10px 20px; background: var(--glass); border: 1px solid var(--border); border-radius: 50px; margin: 5px; display: inline-block; font-size: 0.8rem; font-weight: 600;">Tokyo</span>
+            </div>
+            <button class="cta-button" style="margin-top: 60px;" onclick="window.location.href='signup.html'">Start Your Journey</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

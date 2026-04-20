@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pathfinder | Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dashboard-body">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">PATH<span>FINDER</span></div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main Menu</div>
+        <a href="#" class="nav-item active">🏠 Overview</a>
+        <a href="#" class="nav-item">🗺️ My Roadmaps</a>
+        <a href="#" class="nav-item">🎯 Skill Tracker</a>
+
+        <div class="nav-label" style="margin-top: 20px">Account</div>
+        <a href="#" class="nav-item">👥 Community</a>
+        <a href="#" class="nav-item">⚙️ Settings</a>
+
+        <div class="nav-spacer"></div>
+        <a href="index.html" class="nav-item logout">🚪 Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <div class="search-box">
+          <input type="text" placeholder="Search skills, lessons..." />
+        </div>
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name">Explorer</span>
+            <span class="user-status">Pro Member</span>
+          </div>
+          <div class="user-avatar">EX</div>
+        </div>
+      </div>
+
+      <header class="dash-header">
+        <div class="user-welcome">
+          <h1>Dashboard</h1>
+          <p>
+            Welcome back! You are <strong>3 lessons</strong> away from a new
+            milestone.
+          </p>
+        </div>
+        <button class="signup-btn">+ New Roadmap</button>
+      </header>
+
+      <section class="dash-grid">
+        <div class="card status-card">
+          <div class="card-header">
+            <h3>Overall Progress</h3>
+            <span class="percentage">65%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-fill" style="width: 65%"></div>
+          </div>
+          <p class="card-footer-text">Current Path: Senior Web Developer</p>
+        </div>
+
+        <div class="card status-card">
+          <div class="card-header">
+            <h3>Next Milestone</h3>
+          </div>
+          <p class="milestone-title">Mastering Next.js API Routes</p>
+          <div class="tag-row">
+            <span class="tag">4 days left</span>
+            <span class="tag blue">Intermediate</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="roadmap-section">
+        <div class="section-header">
+          <h2 class="section-title">Active Roadmap</h2>
+          <a href="#" class="form-link">View Details</a>
+        </div>
+
+        <div class="roadmap-list">
+          <div class="roadmap-step-clean completed">
+            <div class="step-line"></div>
+            <div class="step-check">✓</div>
+            <div class="step-content">
+              <h4>HTML/CSS Fundamentals</h4>
+              <p>Completed on Oct 12, 2023</p>
+            </div>
+          </div>
+
+          <div class="roadmap-step-clean active">
+            <div class="step-line"></div>
+            <div class="step-check">⚡</div>
+            <div class="step-content">
+              <h4>Advanced React Patterns</h4>
+              <p>Current: Higher Order Components & Hooks</p>
+              <button class="cta-button small">Continue Lesson</button>
+            </div>
+          </div>
+
+          <div class="roadmap-step-clean locked">
+            <div class="step-check">🔒</div>
+            <div class="step-content">
+              <h4>Backend Architecture</h4>
+              <p>Unlock by completing React module</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
